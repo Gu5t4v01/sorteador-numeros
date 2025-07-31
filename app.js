@@ -2,6 +2,17 @@ function sortear() {
     let quantidade = parseInt(document.getElementById("quantidade").value);
     let de = parseInt(document.getElementById("de").value);
     let ate = parseInt(document.getElementById("ate").value);
+    
+    if (de >= ate) {
+            document.getElementById("resultado").innerHTML ='<label class="texto__paragrafo">O número "Do número" não pode ser maior que "Até o número" </label>';
+            return;
+        } 
+        
+        if (quantidade > (ate - de + 1)){
+        document.getElementById("resultado").innerHTML ='<label class="texto__paragrafo">Verifique a quantitade entre os dois números </label>';
+        return;
+    
+        }
 
     let sorteados = [];
     let numero;
@@ -20,6 +31,7 @@ function sortear() {
     let resultado = document.getElementById("resultado");
     resultado.innerHTML = '<label class="texto__paragrafo">Números sorteados: ' + sorteados.join(", ") + '</label>';
     alterarStatusBotao(desabilitarBotao, abilitarBotao);
+    document.getElementById('btn-reiniciar').removeAttribute('disabled');
   
 }
                        //Número Aleatorio
@@ -45,6 +57,6 @@ function sortear() {
         document.getElementById("resultado").innerHTML ='<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
     let botao = document.getElementById("btn-reiniciar"); 
         alterarStatusBotao(abilitarBotao, desabilitarBotao)
-
+        document.getElementById('btn-reiniciar').setAttribute('disabled');
     }
-      
+     
